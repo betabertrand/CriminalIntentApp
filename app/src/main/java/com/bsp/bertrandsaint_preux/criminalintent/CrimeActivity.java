@@ -1,25 +1,13 @@
 package com.bsp.bertrandsaint_preux.criminalintent;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
-public class CrimeActivity extends AppCompatActivity {
+public class CrimeActivity extends SingleFragmentActivity {
+//this activity extends its parent SFA, that is used as an abstract class to hold all the commonalities of all the activities
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_crime);
-
-        FragmentManager fm = getSupportFragmentManager();
-        Fragment crimeFragment = fm.findFragmentById(R.id.fragment_container);
-
-        if (crimeFragment == null) {
-            crimeFragment = new CrimeFragment();
-            fm.beginTransaction()
-                    .add(R.id.fragment_container, crimeFragment)
-                    .commit();
-        }
+    protected Fragment createFragment() {
+        return new CrimeFragment();
     }
+
 }

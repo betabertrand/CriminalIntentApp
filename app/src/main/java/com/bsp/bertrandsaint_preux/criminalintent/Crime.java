@@ -38,7 +38,7 @@ public class Crime {
         this.mSolved = solved;
     }
 
-    public UUID getId0() {
+    public UUID getId() {
         return mId;
     }
 
