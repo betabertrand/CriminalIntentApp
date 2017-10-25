@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -72,7 +73,7 @@ public class CrimeListFragment extends Fragment {
         }
     }
 
-    private class CrimeHolder extends RecyclerView.ViewHolder { //Inflates a viewHolder which is accessed by the recyclerView ---- actually accessed by the crimeAdapter
+    private class CrimeHolder extends RecyclerView.ViewHolder implements View.OnClickListener{ //Inflates a viewHolder which is accessed by the recyclerView ---- actually accessed by the crimeAdapter
         private TextView mTitleTextView;
         private TextView mDateTextView;
         private Crime mCrime;
@@ -82,6 +83,7 @@ public class CrimeListFragment extends Fragment {
 
             mTitleTextView = (TextView) itemView.findViewById(R.id.crime_title);
             mDateTextView = (TextView) itemView.findViewById(R.id.crime_date);
+            itemView.setOnClickListener(this);
         }
 
         public void bind(Crime crime) {
@@ -90,6 +92,10 @@ public class CrimeListFragment extends Fragment {
             mDateTextView.setText(crime.getDate().toString());
         }
 
+        @Override
+        public void onClick(View view) {
+            Toast.makeText(getActivity(), "Crime " + mCrime.getId() + " Clicked!", Toast.LENGTH_SHORT).show();
+        }
     }
 
 
